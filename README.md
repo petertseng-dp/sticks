@@ -27,6 +27,7 @@ This seemed to not be in keeping with flow-sensitive typing.
 The workaround that I finally discovered is to assign it to a local.
 
 The final interesting thing is that a hash with a default value block doesn't store the default value unless explicitly told to.
+However, the default value block turned out to be inappropriate for this problem anyway.
 
 These three things combined made this problem take a lot longer than it otherwise would have.
 

@@ -15,9 +15,10 @@ sticks = raw_lines[1..-1].each_with_object({} of UInt32 => Stick) { |l, h|
   h[id] = Stick.new(id, vals[0], vals[1], vals[2], vals[3])
 }
 
-# !!! Hash(UInt32, Array(UInt32)) { |h, k| [] of UInt32 } *would* work.
-# However, then the `covers[id2] << id1` line below would need to change to explicitly assign into covers.
-# Otherwise, a temporary array is created, modified, then thrown away without being put into the hash.
+# `Hash(UInt32, Array(UInt32)).new { |h, k| h[k] = [] of UInt32 }` is a possibility,
+# but we have to be careful because each stick must have an entry!
+# Otherwise, the sticks with [] blockers will not be in the hash,
+# and `paths_from` won't be able to make the paths!
 covers = {} of UInt32 => Array(UInt32)
 
 sticks.each { |id1, stick1|
