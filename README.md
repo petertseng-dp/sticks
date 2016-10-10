@@ -32,6 +32,11 @@ h.map { |k, v| {k, v} }.to_h
 Next was a strange problem where simplying saying `if @slope` still allowed for `@slope` to be `nil` inside.
 This seemed to not be in keeping with flow-sensitive typing.
 The workaround that I finally discovered is to assign it to a local.
+I would discover later that this is as https://crystal-lang.org/docs/syntax_and_semantics/if_var.html recommends.
+To quote:
+
+> This is because any method call could potentially affect that instance variable, rendering it `nil`.
+> Another reason is that another thread could change that instance variable after checking the condition.
 
 The final interesting thing is that a hash with a default value block doesn't store the default value unless explicitly told to.
 However, the default value block turned out to be inappropriate for this problem anyway.
