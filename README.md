@@ -2,6 +2,8 @@
 
 Determine the order in which sticks can be removed.
 
+[![Build Status](https://travis-ci.org/petertseng-dp/sticks.svg?branch=master)](https://travis-ci.org/petertseng-dp/sticks)
+
 # Notes
 
 No surprises in this implementation.
