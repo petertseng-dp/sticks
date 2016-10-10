@@ -22,6 +22,13 @@ h.map { |k, v| [k, v] }.to_h
 This was actually a bit frustrating.
 This is a time when I did not appreciate having types.
 
+Finally @asterite had to step in and tell me to use Tuples.
+
+```crystal
+h = {1 => "3"}
+h.map { |k, v| {k, v} }.to_h
+```
+
 Next was a strange problem where simplying saying `if @slope` still allowed for `@slope` to be `nil` inside.
 This seemed to not be in keeping with flow-sensitive typing.
 The workaround that I finally discovered is to assign it to a local.
